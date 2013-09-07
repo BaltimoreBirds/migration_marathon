@@ -12,26 +12,26 @@ require 'csv'
 
 CSV.foreach('/Users/Swannyyy/Dropbox/launchacademy/swerk/Lib/db/checkout.csv', headers:true) do |row|
 
-  books={
+  checked_out={
     check_out_date: row[0],
     due_date: row[1],
     person: row[2]
   }
-  if Checkout.where(books).empty?
-    Checkout.create(books)
+  if Checkout.where(checked_out).empty?
+    Checkout.create(checked_out)
   end
 
 end
 
-CSV.foreach('/Users/Swannyyy/Dropbox/launchacademy/swerk/Lib/db/checkout.csv', headers:true) do |row|
+CSV.foreach('/Users/Swannyyy/Dropbox/launchacademy/swerk/Lib/db/books.csv', headers:true) do |row|
 
   books={
-    check_out_date: row[0],
-    due_date: row[1],
-    person: row[2]
+    title: row[0],
+    authors: row[1],
+    rating: row[2]
   }
-  if Checkout.where(books).empty?
-    Checkout.create(books)
+  if Book.where(books).empty?
+    Book.create(books)
   end
 
 end
