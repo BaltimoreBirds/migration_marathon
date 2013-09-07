@@ -35,3 +35,14 @@ CSV.foreach('/Users/Swannyyy/Dropbox/launchacademy/swerk/Lib/db/books.csv', head
   end
 
 end
+
+CSV.foreach('/Users/Swannyyy/Dropbox/launchacademy/swerk/Lib/db/categories.csv', headers:true) do |row|
+
+  genres={
+    genre: row[0]
+  }
+  if Category.where(genres).empty?
+    Category.create(genres)
+  end
+
+end
